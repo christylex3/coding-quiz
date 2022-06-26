@@ -1,3 +1,10 @@
+/* Header is wrapped in flex-box and space between View Highscores and Timer */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 /* Make buttons purple and have white text */
 button {
     color: white;
