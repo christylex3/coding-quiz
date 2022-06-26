@@ -1,4 +1,10 @@
+/* Make buttons purple and have white text */
 button {
     color: white;
     background-color: purple;
+}
+
+/* When hovering over buttons, they are displayed more transparent */
+button:hover {
+    opacity: 0.6;
 }
