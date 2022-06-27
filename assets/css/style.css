@@ -19,23 +19,9 @@ main {
     margin: 2rem auto;
 }
 
-/* Make buttons purple and have white text */
-/* Link buttons are adjusted to look like other buttons */
-button, button a {
-    color: white;
-    background-color: purple;
-    text-decoration: none;
-    font-size: 1.5rem;
-}
-
-/* "Go Back" button and "View Highscores" label do not show the underline */
-button a, label a {
-    text-decoration: none;
-}
-
-/* When hovering over buttons, they are displayed more transparent */
-button:hover {
-    opacity: 0.6;
+/* Question-page and result-page are left-aligned */
+article {
+    text-align: left;
 }
 
 /* "Coding Quiz Challenge" */
@@ -53,9 +39,22 @@ p, label, input {
     font-size: 1.5rem;
 }
 
-/* Question page are left-aligned */
-article {
-    text-align: left;
+/* Make buttons purple and have white text */
+/* Link buttons are adjusted to look like other buttons */
+button, button a {
+    color: white;
+    background-color: purple;
+    font-size: 1.5rem;
+}
+
+/* "Go Back" button and "View Highscores" label do not show the underline */
+button a, label a {
+    text-decoration: none;
+}
+
+/* When hovering over buttons, they are displayed more transparent */
+button:hover {
+    opacity: 0.6;
 }
 
 /* Answer choices are stacked on top of each other */
