@@ -6,7 +6,51 @@ var questionPage = document.querySelector("#question-page");
 startQuizBtn.addEventListener("click", function() {
     startPage.setAttribute("class", "hidden");
     questionPage.removeAttribute("class", "hidden");
+    // need to add timer to start
 });
+
+// Questions should be made into h2 elements in #question-page
+var storedQuestions = [
+    "Commonly used data types DO NOT include:",
+    "The condition in an if/else statement is enclosed within ___.",
+    "Arrays in JavaScript can be used to store ___.",
+    "String values must be enclosed within ___ when being assigned to variables.",
+    "A very useful tool used during development and debugging for printing content to the debugger is:"
+];
+
+// Answer choices should be made into the buttons orrespondingly
+var storedAnswerChoices = [
+    "1. Strings",
+    "2. Booleans",
+    "3. Alerts",
+    "4. Numbers",
+    "1. Quotes",
+    "2. Curly brackets",
+    "3. Parentheses",
+    "4. Square brackets",
+    "1. Numbers and strings",
+    "2. Other arrays",
+    "3. Booleans",
+    "4. All of the above",
+    "1. Commas",
+    "2. Curly brackets",
+    "3. Quotes",
+    "4. Parentheses",
+    "1. JavaScript",
+    "2. Terminal/Bash",
+    "3. For Loops",
+    "4. console.log",
+]
+
+
+
+// How do I loop one by one 
+// h2 elements
+
+// question-page rotation - how does first page of question display and their answer choices?
+
+// Clicking on an answer choice should move to the next question
+
 
 
 // var pages = ["question-1", "question-2", "question-3", "question-4", "question-5", "result-page"];
