@@ -13,21 +13,21 @@
             <label id="timer">Time:</label>
         </header>
         <main>
-            <section id="start-page" class="show">
+            <section id="start-page" class="hidden page">
                 <h1>Coding Quiz Challenge</h1>
                 <p>
                     Do your best to answer the following code-related questions within the time limit (75 seconds). Answering incorrectly will deduct 10 seconds from the timer.
                 </p>
-                <button>Start Quiz</button>
+                <button id="start-quiz">Start Quiz</button>
             </section>
-            <article id="question-page" class="hidden">
-                <h2 class="question"></h2>
-                <button id="first-answer"></button>
-                <button id="second-answer"></button>
-                <button id="third-answer"></button>
-                <button id="fourth-answer"></button>
+            <article id="question-page" class="show page">
+                <h2 class="question">Commonly used data types DO NOT include:</h2>
+                <button id="first-answer" class="answer-choice">1. Strings</button>
+                <button id="second-answer" class="answer-choice">2. Booleans</button>
+                <button id="third-answer" class="answer-choice">3. Alerts</button>
+                <button id="fourth-answer" class="answer-choice">4. Numbers</button>
             </article>
-            <section id="result-page" class="hidden">
+            <section id="result-page" class="hidden page">
                 <h2>All done!</h2>
                 <p>Your final score is</p>
                 <label>Enter initials:</label>

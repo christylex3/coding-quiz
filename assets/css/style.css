@@ -8,8 +8,10 @@ header {
 
 /* Centers content and limits the width to 70% */
 main {
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    width: 70%;
+    width: 50%;
     margin: 2rem auto;
 }
 
@@ -32,9 +34,21 @@ h1 {
     font-size: 3rem;
 }
 
-/* Instructions to Coding Quiz */
-p {
+/* Questions and description at start-page */
+h2, p {
     font-size: 2rem;
+}
+
+/* Question page are left-aligned */
+article {
+    text-align: left;
+}
+
+/* Answer choices are stacked on top of each other */
+.answer-choice {
+    display: flex;
+    margin-bottom: 0.5rem;
+    /* flex-direction: column; */
 }
 
 .show {
@@ -44,3 +58,4 @@ p {
 .hidden {
     display: none;
 }
+
