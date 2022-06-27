@@ -6,23 +6,25 @@ header {
     font-size: 1.5rem;
 }
 
+/* Centers content and limits the width to 70% */
+main {
+    text-align: center;
+    width: 70%;
+    margin: 2rem auto;
+}
+
 /* Make buttons purple and have white text */
 /* Link buttons are adjusted to look like other buttons */
 button, button a {
     color: white;
     background-color: purple;
     text-decoration: none;
+    font-size: 1.5rem;
 }
 
 /* When hovering over buttons, they are displayed more transparent */
 button:hover {
     opacity: 0.6;
-}
-
-h1, p {
-    text-align: center;
-    width: 50%;
-    margin: 2rem auto;
 }
 
 /* "Coding Quiz Challenge" */
