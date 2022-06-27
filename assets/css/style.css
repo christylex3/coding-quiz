@@ -3,7 +3,6 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-size: 1.5rem;
 }
 
 /* Centers content and limits the width to 70% */
@@ -47,6 +46,11 @@ h2 {
 /* Description of Coding Quiz Challenge */
 p {
     font-size: 2rem;
+}
+
+/* 'View Highscores, Time, Enter initials, and input */
+label, input {
+    font-size: 1.5rem;
 }
 
 /* Question page are left-aligned */
