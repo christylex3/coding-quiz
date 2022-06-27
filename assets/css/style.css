@@ -6,9 +6,11 @@ header {
 }
 
 /* Make buttons purple and have white text */
-button {
+/* Link buttons are adjusted to look like other buttons */
+button, button a {
     color: white;
     background-color: purple;
+    text-decoration: none;
 }
 
 /* When hovering over buttons, they are displayed more transparent */
