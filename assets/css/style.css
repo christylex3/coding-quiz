@@ -1,3 +1,8 @@
+/* All content are under this font */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 /* Header is wrapped in flex-box and 'View Highscores' and 'Timer' has space between them */
 header {
     display: flex;
@@ -43,13 +48,8 @@ h2 {
     font-size: 2.5rem;
 }
 
-/* Description of Coding Quiz Challenge */
-p {
-    font-size: 2rem;
-}
-
-/* 'View Highscores, Time, Enter initials, and input */
-label, input {
+/* Instructions, 'View Highscores, Time, Enter initials, and input */
+p, label, input {
     font-size: 1.5rem;
 }
 
