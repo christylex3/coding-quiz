@@ -24,6 +24,11 @@ button, button a {
     font-size: 1.5rem;
 }
 
+/* "Go Back" button and "View Highscores" label do not show the underline */
+button a, label a {
+    text-decoration: none;
+}
+
 /* When hovering over buttons, they are displayed more transparent */
 button:hover {
     opacity: 0.6;
@@ -58,4 +63,3 @@ article {
 .hidden {
     display: none;
 }
-
