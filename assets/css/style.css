@@ -39,8 +39,13 @@ h1 {
     font-size: 3rem;
 }
 
-/* Questions and description at start-page */
-h2, p {
+/* Questions */
+h2 {
+    font-size: 2.5rem;
+}
+
+/* Description of Coding Quiz Challenge */
+p {
     font-size: 2rem;
 }
 
