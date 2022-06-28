@@ -88,9 +88,11 @@ function scoringQuiz (event) {
         score += 10;
         console.log("Yay!");
         console.log(score);
+        // how to inform user they are right?
     } else {
         // Deduct timer -10 seconds
         console.log("Oh no...");
+        // how to inform user they are wrong?
     }
 
     // If not all questions are displayed, then continue. Else, display results
@@ -106,6 +108,8 @@ function scoringQuiz (event) {
 function displayResult() {
     questionPage.setAttribute("class", "hidden");
     resultPage.removeAttribute("class", "hidden");
+    // math to calculate result
+    // display 
     console.log("You made it to the end!");
 }
 

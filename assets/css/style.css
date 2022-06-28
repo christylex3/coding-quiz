@@ -61,12 +61,13 @@ button:hover {
 .answer-choice {
     display: flex;
     margin-bottom: 0.5rem;
-    /* flex-direction: column; */
 }
 
-/* .show {
-    display: visible;
-} */
+.feedback {
+    opacity: 0.5;
+    font-style: italic;
+    border-top: 2px solid;
+}
 
 .hidden {
     display: none;
