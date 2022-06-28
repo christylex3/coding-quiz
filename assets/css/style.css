@@ -63,10 +63,12 @@ button:hover {
     margin-bottom: 0.5rem;
 }
 
+/* Feedback to answer shows up faintly  */
 .feedback {
     opacity: 0.5;
     font-style: italic;
     border-top: 2px solid;
+    padding-top: 0.5rem;
 }
 
 .hidden {
