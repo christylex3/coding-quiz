@@ -9,6 +9,8 @@ startQuizBtn.addEventListener("click", function() {
     // need to add timer to start
 });
 
+
+
 // Questions should be made into h2 elements in #question-page
 var storedQuestions = [
     "Commonly used data types DO NOT include:",
@@ -18,30 +20,40 @@ var storedQuestions = [
     "A very useful tool used during development and debugging for printing content to the debugger is:"
 ];
 
-// Answer choices should be made into the buttons orrespondingly
+// Answer choices should be made into the buttons correspondingly
 var storedAnswerChoices = [
-    "1. Strings",
-    "2. Booleans",
-    "3. Alerts",
-    "4. Numbers",
-    "1. Quotes",
+    "1. Strings", // 0
+    "2. Booleans", // 1
+    "3. Alerts", // *** 2
+    "4. Numbers", //3
+    "1. Quotes", // 4
+    "2. Curly brackets", // *** 5
+    "3. Parentheses", //6
+    "4. Square brackets", // 7
+    "1. Numbers and strings", // 8
+    "2. Other arrays", // 9
+    "3. Booleans", //10
+    "4. All of the above", // *** 11
+    "1. Commas", // 12
     "2. Curly brackets",
-    "3. Parentheses",
-    "4. Square brackets",
-    "1. Numbers and strings",
-    "2. Other arrays",
-    "3. Booleans",
-    "4. All of the above",
-    "1. Commas",
-    "2. Curly brackets",
-    "3. Quotes",
+    "3. Quotes", // *** 14
     "4. Parentheses",
-    "1. JavaScript",
+    "1. JavaScript", // 16
     "2. Terminal/Bash",
     "3. For Loops",
-    "4. console.log",
-]
+    "4. console.log", // *** 19 
+];
 
+var storedCorrectAnswerChoices = [storedAnswerChoices[2], storedAnswerChoices[5], storedAnswerChoices[11], storedAnswerChoices[14], storedAnswerChoices[19]];
+console.log(storedAnswerChoices[2]);
+console.log(storedAnswerChoices[5]);
+console.log(storedAnswerChoices[11]);
+console.log(storedAnswerChoices[14]);
+console.log(storedAnswerChoices[19]);
+var answerChoice1 = document.querySelector("#first-answer");
+var answerChoice2 = document.querySelector("#second-answer");
+// answerChoice1.textContent(storedAnswerChoices[4]);
+// answerChoice2.textContent(storedAnswerChoices[5]);
 
 
 // How do I loop one by one 
