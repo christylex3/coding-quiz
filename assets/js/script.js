@@ -44,11 +44,12 @@ function displayAnswerChoices() {
     // Always set reset answer choices when next question is displayed
     var answerChoice = "";
     var answerTracker = questionTracker * 4;
-
+    var j = 0
     // Assigns each answer choice a slot (based on button id) and a string from storedAnswerChoices
     for (var i = answerTracker; i < answerTracker + 4; i++) {
-        answerChoice = document.querySelector(answerChoiceSlots[i]);
+        answerChoice = document.querySelector(answerChoiceSlots[j]);
         answerChoice.textContent = storedAnswerChoices[i];
+        j++;
     }
 }
 
@@ -91,13 +92,21 @@ function scoringQuiz (event) {
         // Deduct timer -10 seconds
         console.log("Oh no...");
     }
-    if (questionTracker < storedQuestions.length) {
+
+    // If not all questions are displayed, then continue. Else, display results
+    if (questionTracker < storedQuestions.length-1) {
         questionTracker++;
+        console.log(questionTracker);
         displayNextQuestion();
     } else {
-        questionPage.setAttribute("class", "hidden");
-        resultPage.removeAttribute("class", "hidden");
+        displayResult();
     }
+}
+
+function displayResult() {
+    questionPage.setAttribute("class", "hidden");
+    resultPage.removeAttribute("class", "hidden");
+    console.log("You made it to the end!");
 }
 
 // MAY NEED TO CLEAN UP...
@@ -111,27 +120,6 @@ answerButton1.addEventListener("click", scoringQuiz);
 answerButton2.addEventListener("click", scoringQuiz);
 answerButton3.addEventListener("click", scoringQuiz);
 answerButton4.addEventListener("click", scoringQuiz);
-
-
-
-// question-page rotation - how does first page of question display and their answer choices?
-
-// Clicking on an answer choice should move to the next question
-
-
-
-// var pages = ["question-1", "question-2", "question-3", "question-4", "question-5", "result-page"];
-// // default first page is start-page
-
-// function nextPage (page) {
-//     // If this is the page, then make it change to the next page
-//     for (var i = 0; i < pages.length-1; i++) {
-//         // if it is this page, then change to next page, but if it is the result-page, leave it there
-//         if (page === pages[i] && page != pages[pages.length-1]) {
-//             return page = pages[i + 1];
-//         }
-//     }
-// }
 
 // console.log(nextPage("start-page"));
 // console.log(nextPage("question-5"));
