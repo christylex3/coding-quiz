@@ -73,28 +73,64 @@ function startQuiz () {
 }
 
 // IN PROGRESS... 
-function scoringQuiz (questionTracker, answerButton) {
+function scoringQuiz (event) {
+    var chosenAnswer = event.target.innerText;
+    if () {
+
+    }
+
+    // var correctAnswer = storedCorrectAnswerChoices[questionTracker];
+    // var chosenAnswer = answerButton;
+
+    // If this is question 1, then 1uestion's 1 is this answer
+    // if storedQuestion
+    // if(questionTracker == 1) {
+    //     if () {
+
+    //     }
+    // }
+    // console.log(chosenAnswer);
+    // console.log(correctAnswer);
+    // console.log(storedCorrectAnswerChoices);
+    // console.log(storedCorrectAnswerChoices[questionTracker]);
+    // if (chosenAnswer === correctAnswer) {
+    //     console.log("You are correct");
+    // } else {
+    //     console.log("You are wrong");
+    // }
+    // if (answerbutton === correctAnswer) {
+
+    // }
     // if this is question #1, then
-    console.log(answerButton.getElementbyId());
-    if (storedQuestions[questionTracker]) {
-        if (answerButton.textContent.includes(storedCorrectAnswerChoices[questionTracker])) {
-            // notify they are right
-            console.log("You are right.");
-        } else {
-            // notify they are wrong and deduct time
-            console.log("You are wrong.");
-        }
-    } 
-    console.log("hi");
+    // if (storedQuestions[questionTracker]) {
+    //     if (answerButton.textContent.includes(storedCorrectAnswerChoices[questionTracker])) {
+    //         // notify they are right
+    //         console.log("You are right.");
+    //     } else {
+    //         // notify they are wrong and deduct time
+    //         console.log("You are wrong.");
+    //     }
+    // } 
+    // console.log("hi");
 
     return questionTracker++;
 }
 
 // MAY NEED TO FIX...
-var answerButton = document.querySelector(".answer-choice");
+// var answerButton = document.querySelectorAll(".answer-choice");
+// console.log(answerButton);
+// console.log(answerButton[0]);
+// console.log(answerButton[0].getId);
+var answerButton1 = document.querySelector(answerChoiceSlots[0]);
+var answerButton2 = document.querySelector(answerChoiceSlots[1]);
+var answerButton3 = document.querySelector(answerChoiceSlots[2]);
+var answerButton4 = document.querySelector(answerChoiceSlots[3]);
 
 // MAY NEED TO FIX...
-answerButton.addEventListener("click", scoringQuiz);
+answerButton1.addEventListener("click", scoringQuiz);
+answerButton2.addEventListener("click", scoringQuiz);
+answerButton3.addEventListener("click", scoringQuiz);
+answerButton4.addEventListener("click", scoringQuiz);
 
 
 
@@ -106,7 +142,6 @@ answerButton.addEventListener("click", scoringQuiz);
 
 // var pages = ["question-1", "question-2", "question-3", "question-4", "question-5", "result-page"];
 // // default first page is start-page
-
 
 // function nextPage (page) {
 //     // If this is the page, then make it change to the next page
