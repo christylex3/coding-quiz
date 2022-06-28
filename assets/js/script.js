@@ -1,16 +1,3 @@
-var startQuizBtn = document.querySelector("#start-quiz");
-var startPage = document.querySelector("#start-page");
-var questionPage = document.querySelector("#question-page");
-
-// Clicking on start quiz button will hide the start-page and display the question-page
-startQuizBtn.addEventListener("click", function() {
-    startPage.setAttribute("class", "hidden");
-    questionPage.removeAttribute("class", "hidden");
-    // need to add timer to start
-});
-
-
-
 // Questions should be made into h2 elements in #question-page
 var storedQuestions = [
     "Commonly used data types DO NOT include:",
@@ -22,36 +9,40 @@ var storedQuestions = [
 
 // Answer choices should be made into the buttons correspondingly
 var storedAnswerChoices = [
-    "1. Strings", // 0
-    "2. Booleans", // 1
-    "3. Alerts", // *** 2
-    "4. Numbers", //3
-    "1. Quotes", // 4
-    "2. Curly brackets", // *** 5
-    "3. Parentheses", //6
-    "4. Square brackets", // 7
-    "1. Numbers and strings", // 8
-    "2. Other arrays", // 9
-    "3. Booleans", //10
-    "4. All of the above", // *** 11
-    "1. Commas", // 12
-    "2. Curly brackets",
-    "3. Quotes", // *** 14
-    "4. Parentheses",
-    "1. JavaScript", // 16
-    "2. Terminal/Bash",
-    "3. For Loops",
-    "4. console.log", // *** 19 
+    "1. Strings", "2. Booleans", "3. Alerts", "4. Numbers",
+    "1. Quotes", "2. Curly brackets", "3. Parentheses", "4. Square brackets",
+    "1. Numbers and strings", "2. Other arrays", "3. Booleans", "4. All of the above",
+    "1. Commas", "2. Curly brackets", "3. Quotes", "4. Parentheses",
+    "1. JavaScript", "2. Terminal/Bash", "3. For Loops", "4. console.log",
 ];
 
 var storedCorrectAnswerChoices = [storedAnswerChoices[2], storedAnswerChoices[5], storedAnswerChoices[11], storedAnswerChoices[14], storedAnswerChoices[19]];
-console.log(storedAnswerChoices[2]);
-console.log(storedAnswerChoices[5]);
-console.log(storedAnswerChoices[11]);
-console.log(storedAnswerChoices[14]);
-console.log(storedAnswerChoices[19]);
-var answerChoice1 = document.querySelector("#first-answer");
-var answerChoice2 = document.querySelector("#second-answer");
+
+var pageTracker;
+
+var startQuizBtn = document.querySelector("#start-quiz");
+var startPage = document.querySelector("#start-page");
+var questionPage = document.querySelector("#question-page");
+
+// Clicking on start quiz button will hide the #start-page and display the #question-page
+startQuizBtn.addEventListener("click", function() {
+    startPage.setAttribute("class", "hidden");
+    questionPage.removeAttribute("class", "hidden");
+    displayQuestion(0);
+    // displayAnswerChoices(0);
+    // need to add timer to start
+});
+
+// Displays the question on screen
+function displayQuestion (pageTracker) {
+    // question will display as the h2 element under #question-page
+    var question = document.querySelector("#question");
+    // question's text is grabbed from the array, 'storedQuestions'
+    question.textContent = storedQuestions[pageTracker];
+}
+
+// var answerChoice1 = document.querySelector("#first-answer");
+// var answerChoice2 = document.querySelector("#second-answer");
 // answerChoice1.textContent(storedAnswerChoices[4]);
 // answerChoice2.textContent(storedAnswerChoices[5]);
 
