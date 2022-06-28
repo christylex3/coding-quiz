@@ -27,15 +27,21 @@ var questionTracker = 0;
 
 // Displays the question on screen
 function displayQuestion (questionTracker) {
+
+    // Always set reset question when method is called
+    var question = "";
+
     // question will display as the h2 element under #question-page
-    var question = document.querySelector("#question");
+    question = document.querySelector("#question");
+
     // question's text is grabbed from the array, 'storedQuestions'
     question.textContent = storedQuestions[questionTracker];
 }
 
 // Displays the corresponding answer choices with the question
 function displayAnswerChoices(questionTracker) {
-    //Always set reset answer choices when next question is displayed
+
+    // Always set reset answer choices when next question is displayed
     var answerChoice = "";
     var answerTracker = questionTracker * 4;
 
@@ -44,6 +50,12 @@ function displayAnswerChoices(questionTracker) {
         answerChoice = document.querySelector(answerChoiceSlots[i]);
         answerChoice.textContent = storedAnswerChoices[i];
     }
+}
+
+// Displays the next question and set of answer choices
+function displayNextQuestion () {
+    displayQuestion(questionTracker);
+    displayAnswerChoices(questionTracker);
 }
 
 var startQuizBtn = document.querySelector("#start-quiz");
@@ -60,16 +72,29 @@ function startQuiz () {
     displayNextQuestion();
 }
 
-function displayNextQuestion () {
-    displayQuestion(questionTracker);
-    displayAnswerChoices(questionTracker);
+// IN PROGRESS... 
+function scoringQuiz (questionTracker, answerButton) {
+    // if this is question #1, then
+    console.log(answerButton.getElementbyId());
+    if (storedQuestions[questionTracker]) {
+        if (answerButton.textContent.includes(storedCorrectAnswerChoices[questionTracker])) {
+            // notify they are right
+            console.log("You are right.");
+        } else {
+            // notify they are wrong and deduct time
+            console.log("You are wrong.");
+        }
+    } 
+    console.log("hi");
+
+    return questionTracker++;
 }
 
-var answerButton = document.querySelectorAll(".answer-choice");
+// MAY NEED TO FIX...
+var answerButton = document.querySelector(".answer-choice");
 
-// answerButton.addEventListener("click", function()) {
-
-// }
+// MAY NEED TO FIX...
+answerButton.addEventListener("click", scoringQuiz);
 
 
 
