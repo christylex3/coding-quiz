@@ -23,10 +23,7 @@ var storedCorrectAnswerChoices = [storedAnswerChoices[2], storedAnswerChoices[5]
 var answerChoiceSlots = ["#first-answer", "#second-answer", "#third-answer", "#fourth-answer"];
 
 // Variable that tracks question number
-var questionTracker;
-
-// Variable that tracks the answer choices
-var answerTracker
+var questionTracker = 0;
 
 // Displays the question on screen
 function displayQuestion (questionTracker) {
@@ -37,11 +34,13 @@ function displayQuestion (questionTracker) {
 }
 
 // Displays the corresponding answer choices with the question
-function displayAnswerChoices(answerTracker) {
-    var answerChoice;
-    // Loops through answer 
-    for (var i = answerTracker; i < 4; i++) {
-        //
+function displayAnswerChoices(questionTracker) {
+    //Always set reset answer choices when next question is displayed
+    var answerChoice = "";
+    var answerTracker = questionTracker * 4;
+
+    // Assigns each answer choice a slot (based on button id) and a string from storedAnswerChoices
+    for (var i = answerTracker; i < answerTracker + 4; i++) {
         answerChoice = document.querySelector(answerChoiceSlots[i]);
         answerChoice.textContent = storedAnswerChoices[i];
     }
@@ -51,14 +50,26 @@ var startQuizBtn = document.querySelector("#start-quiz");
 var startPage = document.querySelector("#start-page");
 var questionPage = document.querySelector("#question-page");
 
-// Clicking on start quiz button will hide the #start-page and display the #question-page
-startQuizBtn.addEventListener("click", function() {
+// Clicking on start quiz button will call the startQuiz function
+startQuizBtn.addEventListener("click", startQuiz);
+
+// Hides the start-page and displays the first question
+function startQuiz () {
     startPage.setAttribute("class", "hidden");
     questionPage.removeAttribute("class", "hidden");
-    displayQuestion(0);
-    displayAnswerChoices(0);
-    // need to add timer to start
-});
+    displayNextQuestion();
+}
+
+function displayNextQuestion () {
+    displayQuestion(questionTracker);
+    displayAnswerChoices(questionTracker);
+}
+
+var answerButton = document.querySelectorAll(".answer-choice");
+
+// answerButton.addEventListener("click", function()) {
+
+// }
 
 
 
