@@ -26,7 +26,7 @@ var answerChoiceSlots = ["#first-answer", "#second-answer", "#third-answer", "#f
 var questionTracker = 0;
 
 // Displays the question on screen
-function displayQuestion (questionTracker) {
+function displayQuestion () {
 
     // Always set reset question when method is called
     var question = "";
@@ -39,7 +39,7 @@ function displayQuestion (questionTracker) {
 }
 
 // Displays the corresponding answer choices with the question
-function displayAnswerChoices(questionTracker) {
+function displayAnswerChoices() {
 
     // Always set reset answer choices when next question is displayed
     var answerChoice = "";
@@ -54,13 +54,14 @@ function displayAnswerChoices(questionTracker) {
 
 // Displays the next question and set of answer choices
 function displayNextQuestion () {
-    displayQuestion(questionTracker);
-    displayAnswerChoices(questionTracker);
+    displayQuestion();
+    displayAnswerChoices();
 }
 
 var startQuizBtn = document.querySelector("#start-quiz");
 var startPage = document.querySelector("#start-page");
 var questionPage = document.querySelector("#question-page");
+var resultPage = document.querySelector("#result-page");
 
 // Clicking on start quiz button will call the startQuiz function
 startQuizBtn.addEventListener("click", startQuiz);
@@ -72,61 +73,40 @@ function startQuiz () {
     displayNextQuestion();
 }
 
+var score = 0;
+
 // IN PROGRESS... 
 function scoringQuiz (event) {
+
+    // User's selected answer choice 
     var chosenAnswer = event.target.innerText;
-    if () {
 
+    // If user's selected answer choice is the correct answer...
+    if (chosenAnswer === storedCorrectAnswerChoices[questionTracker]) {
+        // Keep count add points to score
+        score += 10;
+        console.log("Yay!");
+        console.log(score);
+    } else {
+        // Deduct timer -10 seconds
+        console.log("Oh no...");
     }
-
-    // var correctAnswer = storedCorrectAnswerChoices[questionTracker];
-    // var chosenAnswer = answerButton;
-
-    // If this is question 1, then 1uestion's 1 is this answer
-    // if storedQuestion
-    // if(questionTracker == 1) {
-    //     if () {
-
-    //     }
-    // }
-    // console.log(chosenAnswer);
-    // console.log(correctAnswer);
-    // console.log(storedCorrectAnswerChoices);
-    // console.log(storedCorrectAnswerChoices[questionTracker]);
-    // if (chosenAnswer === correctAnswer) {
-    //     console.log("You are correct");
-    // } else {
-    //     console.log("You are wrong");
-    // }
-    // if (answerbutton === correctAnswer) {
-
-    // }
-    // if this is question #1, then
-    // if (storedQuestions[questionTracker]) {
-    //     if (answerButton.textContent.includes(storedCorrectAnswerChoices[questionTracker])) {
-    //         // notify they are right
-    //         console.log("You are right.");
-    //     } else {
-    //         // notify they are wrong and deduct time
-    //         console.log("You are wrong.");
-    //     }
-    // } 
-    // console.log("hi");
-
-    return questionTracker++;
+    if (questionTracker < storedQuestions.length) {
+        questionTracker++;
+        displayNextQuestion();
+    } else {
+        questionPage.setAttribute("class", "hidden");
+        resultPage.removeAttribute("class", "hidden");
+    }
 }
 
-// MAY NEED TO FIX...
-// var answerButton = document.querySelectorAll(".answer-choice");
-// console.log(answerButton);
-// console.log(answerButton[0]);
-// console.log(answerButton[0].getId);
+// MAY NEED TO CLEAN UP...
 var answerButton1 = document.querySelector(answerChoiceSlots[0]);
 var answerButton2 = document.querySelector(answerChoiceSlots[1]);
 var answerButton3 = document.querySelector(answerChoiceSlots[2]);
 var answerButton4 = document.querySelector(answerChoiceSlots[3]);
 
-// MAY NEED TO FIX...
+// MAY NEED TO CLEAN UP...
 answerButton1.addEventListener("click", scoringQuiz);
 answerButton2.addEventListener("click", scoringQuiz);
 answerButton3.addEventListener("click", scoringQuiz);
