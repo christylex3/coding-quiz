@@ -1,4 +1,4 @@
-// Questions should be made into h2 elements in #question-page
+// Array that stores all questions
 var storedQuestions = [
     "Commonly used data types DO NOT include:",
     "The condition in an if/else statement is enclosed within ___.",
@@ -7,7 +7,7 @@ var storedQuestions = [
     "A very useful tool used during development and debugging for printing content to the debugger is:"
 ];
 
-// Answer choices should be made into the buttons correspondingly
+// Array that stores all answer choices
 var storedAnswerChoices = [
     "1. Strings", "2. Booleans", "3. Alerts", "4. Numbers",
     "1. Quotes", "2. Curly brackets", "3. Parentheses", "4. Square brackets",
@@ -16,9 +16,36 @@ var storedAnswerChoices = [
     "1. JavaScript", "2. Terminal/Bash", "3. For Loops", "4. console.log",
 ];
 
+// Array that stores all the correct answers to the questions
 var storedCorrectAnswerChoices = [storedAnswerChoices[2], storedAnswerChoices[5], storedAnswerChoices[11], storedAnswerChoices[14], storedAnswerChoices[19]];
 
-var pageTracker;
+// Array that stores the specific slot of each answer choice
+var answerChoiceSlots = ["#first-answer", "#second-answer", "#third-answer", "#fourth-answer"];
+
+// Variable that tracks question number
+var questionTracker;
+
+// Variable that tracks the answer choices
+var answerTracker
+
+// Displays the question on screen
+function displayQuestion (questionTracker) {
+    // question will display as the h2 element under #question-page
+    var question = document.querySelector("#question");
+    // question's text is grabbed from the array, 'storedQuestions'
+    question.textContent = storedQuestions[questionTracker];
+}
+
+// Displays the corresponding answer choices with the question
+function displayAnswerChoices(answerTracker) {
+    var answerChoice;
+    // Loops through answer 
+    for (var i = answerTracker; i < 4; i++) {
+        //
+        answerChoice = document.querySelector(answerChoiceSlots[i]);
+        answerChoice.textContent = storedAnswerChoices[i];
+    }
+}
 
 var startQuizBtn = document.querySelector("#start-quiz");
 var startPage = document.querySelector("#start-page");
@@ -29,26 +56,11 @@ startQuizBtn.addEventListener("click", function() {
     startPage.setAttribute("class", "hidden");
     questionPage.removeAttribute("class", "hidden");
     displayQuestion(0);
-    // displayAnswerChoices(0);
+    displayAnswerChoices(0);
     // need to add timer to start
 });
 
-// Displays the question on screen
-function displayQuestion (pageTracker) {
-    // question will display as the h2 element under #question-page
-    var question = document.querySelector("#question");
-    // question's text is grabbed from the array, 'storedQuestions'
-    question.textContent = storedQuestions[pageTracker];
-}
 
-// var answerChoice1 = document.querySelector("#first-answer");
-// var answerChoice2 = document.querySelector("#second-answer");
-// answerChoice1.textContent(storedAnswerChoices[4]);
-// answerChoice2.textContent(storedAnswerChoices[5]);
-
-
-// How do I loop one by one 
-// h2 elements
 
 // question-page rotation - how does first page of question display and their answer choices?
 
