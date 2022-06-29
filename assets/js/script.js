@@ -31,19 +31,19 @@ var answerButton3 = document.querySelector(answerChoiceSlots[2]);
 var answerButton4 = document.querySelector(answerChoiceSlots[3]);
 
 if (answerButton1) {
-    answerButton1.addEventListener("click", scoringQuiz);
+    answerButton1.addEventListener("click", gradingQuiz);
 }
 
 if (answerButton2) {
-    answerButton2.addEventListener("click", scoringQuiz);
+    answerButton2.addEventListener("click", gradingQuiz);
 }
 
 if (answerButton3) {
-    answerButton3.addEventListener("click", scoringQuiz);
+    answerButton3.addEventListener("click", gradingQuiz);
 }
 
 if (answerButton4) {
-    answerButton4.addEventListener("click", scoringQuiz);
+    answerButton4.addEventListener("click", gradingQuiz);
 }
 
 
@@ -120,7 +120,7 @@ var score = 0;
 var feedback = document.querySelector(".feedback");
 
 // Grades the user when they take the quiz
-function scoringQuiz (event) {
+function gradingQuiz (event) {
 
     // User's selected answer choice 
     var chosenAnswer = event.target.innerText;
