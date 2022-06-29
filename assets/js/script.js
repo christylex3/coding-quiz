@@ -114,14 +114,14 @@ function scoringQuiz (event) {
 // Tells user when they choose the correct or wrong answer
 function showFeedback(feedback) {
     var timedFeedback = 1;
-    feedback.removeAttribute("class", "hidden");
+    feedback.classList.remove("hidden");
 
     // Feedback will show up for only one second and then disappear
     var timerInterval = setInterval(function() {
         timedFeedback--;
         if (timedFeedback === 0) {
             clearInterval(timerInterval);
-            feedback.setAttribute("class", "hidden");
+            feedback.classList.add("hidden");
         }
     }, 1000);
 }
