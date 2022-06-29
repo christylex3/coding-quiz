@@ -69,8 +69,8 @@ startQuizBtn.addEventListener("click", startQuiz);
 
 // Hides the start-page and displays the first question
 function startQuiz () {
-    startPage.setAttribute("class", "hidden");
-    questionPage.removeAttribute("class", "hidden");
+    startPage.classList.add("hidden");
+    questionPage.classList.remove("hidden");
     displayNextQuestion();
 }
 
@@ -127,8 +127,8 @@ function showFeedback(feedback) {
 }
 
 function displayResult() {
-    questionPage.setAttribute("class", "hidden");
-    resultPage.removeAttribute("class", "hidden");
+    questionPage.classList.add("hidden");
+    resultPage.classList.remove("hidden");
     // math to calculate result: consider time remaining
     // display 
     console.log("You made it to the end!");
