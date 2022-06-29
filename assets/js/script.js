@@ -188,7 +188,6 @@ var list = docment.querySelector("#highscore-list");
 console.log(list);
 // var list = document.createElement("ol");
 
-
 function displayHighscores() {
     initialsList.push(userInitials.value);
     highscoreList.push(highscore);
@@ -196,11 +195,6 @@ function displayHighscores() {
         var li = document.createElement("li");
         li.textContent(initialsList[i] + " - " + highscoreList[i]);
         list.appendChild(li);
-        if (i % 2 === 0 /*|| i % 2 === 2*/) {
-            li.setAttribute("style", " background-color: rgb(239, 222, 252)");
-        } else {
-            li.setAttribute("style", " background-color: rgb(223, 181, 252)");
-        }
     }
     // Create ordered list element
     // Create ordered list items
