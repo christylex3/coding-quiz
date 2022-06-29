@@ -103,21 +103,21 @@ function scoringQuiz (event) {
 
     // If user's selected answer choice is the correct answer...
     if (chosenAnswer === storedCorrectAnswerChoices[questionTracker]) {
+
         // Informs user that they selected the correct answer and add points to score
         feedback.textContent = "Correct!";
         score += 10;
-
     } else {
+
         // Informs user they selected correct answer and penalizes user by deducting timer
         feedback.textContent = "Wrong!"
         overallTimer -= 10;
     }
     showFeedback(feedback);
     questionTracker++;
+
     // If not all questions are displayed, then continue. Else, display results
     if (questionTracker < storedQuestions.length) {
-       
-        console.log(questionTracker);
         displayNextQuestion();
     } else {
         displayResult();
@@ -139,12 +139,13 @@ function showFeedback(feedback) {
     }, 1000);
 }
 
+var finalScore = document.querySelector("#final-score");
+
+// Displays the result page and shows total score
 function displayResult() {
     questionPage.classList.add("hidden");
     resultPage.classList.remove("hidden");
-    // math to calculate result: consider time remaining
-    // display 
-    console.log("You made it to the end!");
+    finalScore.textContent = "Your final score is " + (score + overallTimer);
 }
 
 // MAY NEED TO CLEAN UP...
