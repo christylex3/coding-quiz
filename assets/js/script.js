@@ -25,7 +25,6 @@ var answerChoiceSlots = ["#first-answer", "#second-answer", "#third-answer", "#f
 // Variable that tracks question number
 var questionTracker = 0;
 
-
 var answerButton1 = document.querySelector(answerChoiceSlots[0]);
 var answerButton2 = document.querySelector(answerChoiceSlots[1]);
 var answerButton3 = document.querySelector(answerChoiceSlots[2]);
@@ -103,7 +102,7 @@ function startQuiz () {
 var overallTimer = 75;
 var timerInfo = document.querySelector("#timer");
 
-// The quiz'z timer is set to have 75 seconds and decrements
+// The quiz's timer is set to have 75 seconds and decrements
 function quizTimer() {
     var quizTimerInterval = setInterval(function() {
         overallTimer--;
@@ -188,14 +187,7 @@ var highscoreList = [];
 function displayHighscores() {
     initialsList.push(userInitials.value);
     highscoreList.push(highscore);
+    // Create ordered list element
+    // Create ordered list items
+    // Add text for list items / loop through array to 
 }
-
-
-
-
-// console.log(nextPage("start-page"));
-// console.log(nextPage("question-5"));
-// Clicking "Start Quiz" will change start-page to question-page
-// Clicking any answer-choice will move to next question-page
-// Clicking last question-page will move to result-page
-// If timer is over before reaching the end of the question, move to result-page
