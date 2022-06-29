@@ -8,7 +8,7 @@ var storedQuestions = [
 ];
 
 // Array that stores all answer choices
-var storedAnswerChoices = [
+var storedAnswers = [
     "1. Strings", "2. Booleans", "3. Alerts", "4. Numbers",
     "1. Quotes", "2. Curly brackets", "3. Parentheses", "4. Square brackets",
     "1. Numbers and strings", "2. Other arrays", "3. Booleans", "4. All of the above",
@@ -17,7 +17,7 @@ var storedAnswerChoices = [
 ];
 
 // Array that stores all the correct answers to the questions
-var storedCorrectAnswerChoices = [storedAnswerChoices[2], storedAnswerChoices[5], storedAnswerChoices[11], storedAnswerChoices[14], storedAnswerChoices[19]];
+var storedCorrectAns = [storedAnswers[2], storedAnswers[5], storedAnswers[11], storedAnswers[14], storedAnswers[19]];
 
 // Array that stores the specific slot of each answer choice
 var answerChoiceSlots = ["#first-answer", "#second-answer", "#third-answer", "#fourth-answer"];
@@ -67,10 +67,10 @@ function displayAnswerChoices() {
     var answerChoice = "";
     var answerTracker = questionTracker * 4;
     var j = 0
-    // Assigns each answer choice a slot (based on button id) and a string from storedAnswerChoices
+    // Assigns each answer choice a slot (based on button id) and a string from storedAnswers
     for (var i = answerTracker; i < answerTracker + 4; i++) {
         answerChoice = document.querySelector(answerChoiceSlots[j]);
-        answerChoice.textContent = storedAnswerChoices[i];
+        answerChoice.textContent = storedAnswers[i];
         j++;
     }
 }
@@ -127,7 +127,7 @@ function gradingQuiz (event) {
     feedback.textContent = "";
 
     // If user's selected answer choice is the correct answer...
-    if (chosenAnswer === storedCorrectAnswerChoices[questionTracker]) {
+    if (chosenAnswer === storedCorrectAns[questionTracker]) {
 
         // Informs user that they selected the correct answer and add points to score
         feedback.textContent = "Correct!";
