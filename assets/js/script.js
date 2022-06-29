@@ -75,12 +75,14 @@ function startQuiz () {
 }
 
 var score = 0;
+var feedback = document.querySelector(".feedback");
 
 // IN PROGRESS... 
 function scoringQuiz (event) {
 
     // User's selected answer choice 
     var chosenAnswer = event.target.innerText;
+    feedback.textContent = "";
 
     // If user's selected answer choice is the correct answer...
     if (chosenAnswer === storedCorrectAnswerChoices[questionTracker]) {
@@ -89,12 +91,15 @@ function scoringQuiz (event) {
         console.log("Yay!");
         console.log(score);
         // how to inform user they are right?
+        feedback.textContent = "Correct!";
+
     } else {
-        // Deduct timer -10 seconds
         console.log("Oh no...");
+        feedback.textContent = "Wrong!"
+        // Deduct timer -10 seconds
         // how to inform user they are wrong?
     }
-
+    showFeedback(feedback);
     // If not all questions are displayed, then continue. Else, display results
     if (questionTracker < storedQuestions.length-1) {
         questionTracker++;
@@ -105,10 +110,26 @@ function scoringQuiz (event) {
     }
 }
 
+// ****** Need to fix style for this feedback
+// Tells user when they choose the correct or wrong answer
+function showFeedback(feedback) {
+    var timedFeedback = 1;
+    feedback.removeAttribute("class", "hidden");
+
+    // Feedback will show up for only one second and then disappear
+    var timerInterval = setInterval(function() {
+        timedFeedback--;
+        if (timedFeedback === 0) {
+            clearInterval(timerInterval);
+            feedback.setAttribute("class", "hidden");
+        }
+    }, 1000);
+}
+
 function displayResult() {
     questionPage.setAttribute("class", "hidden");
     resultPage.removeAttribute("class", "hidden");
-    // math to calculate result
+    // math to calculate result: consider time remaining
     // display 
     console.log("You made it to the end!");
 }
