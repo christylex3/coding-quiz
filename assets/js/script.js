@@ -67,6 +67,7 @@ function displayAnswerChoices() {
     var answerChoice = "";
     var answerTracker = questionTracker * 4;
     var j = 0
+
     // Assigns each answer choice a slot (based on button id) and a string from storedAnswers
     for (var i = answerTracker; i < answerTracker + 4; i++) {
         answerChoice = document.querySelector(answerChoiceSlots[j]);
@@ -183,10 +184,24 @@ if (submitBtn) {
 
 var initialsList = [];
 var highscoreList = [];
+var list = docment.querySelector("#highscore-list");
+console.log(list);
+// var list = document.createElement("ol");
+
 
 function displayHighscores() {
     initialsList.push(userInitials.value);
     highscoreList.push(highscore);
+    for (var i = 0; i < initialsList.length; i++) {
+        var li = document.createElement("li");
+        li.textContent(initialsList[i] + " - " + highscoreList[i]);
+        list.appendChild(li);
+        if (i % 2 === 0 /*|| i % 2 === 2*/) {
+            li.setAttribute("style", " background-color: rgb(239, 222, 252)");
+        } else {
+            li.setAttribute("style", " background-color: rgb(223, 181, 252)");
+        }
+    }
     // Create ordered list element
     // Create ordered list items
     // Add text for list items / loop through array to 
