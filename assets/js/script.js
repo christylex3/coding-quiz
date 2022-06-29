@@ -77,7 +77,7 @@ function startQuiz () {
 var score = 0;
 var feedback = document.querySelector(".feedback");
 
-// IN PROGRESS... 
+// ****** IN PROGRESS...
 function scoringQuiz (event) {
 
     // User's selected answer choice 
