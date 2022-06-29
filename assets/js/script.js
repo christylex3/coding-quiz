@@ -71,7 +71,24 @@ startQuizBtn.addEventListener("click", startQuiz);
 function startQuiz () {
     startPage.classList.add("hidden");
     questionPage.classList.remove("hidden");
+    quizTimer();
     displayNextQuestion();
+}
+
+var overallTimer = 75;
+var timerInfo = document.querySelector("#timer");
+
+function quizTimer() {
+    var quizTimerInterval = setInterval(function() {
+        overallTimer--;
+        timerInfo.textContent = "Time: " + overallTimer;
+
+        // If timer runs out before user answers all question, take user to result-page
+        if (overallTimer === 0 || questionTracker > 4) {
+            displayResult();
+            clearInterval(quizTimerInterval);
+        }
+    }, 1000);
 }
 
 var score = 0;
@@ -86,23 +103,20 @@ function scoringQuiz (event) {
 
     // If user's selected answer choice is the correct answer...
     if (chosenAnswer === storedCorrectAnswerChoices[questionTracker]) {
-        // Keep count add points to score
-        score += 10;
-        console.log("Yay!");
-        console.log(score);
-        // how to inform user they are right?
+        // Informs user that they selected the correct answer and add points to score
         feedback.textContent = "Correct!";
+        score += 10;
 
     } else {
-        console.log("Oh no...");
+        // Informs user they selected correct answer and penalizes user by deducting timer
         feedback.textContent = "Wrong!"
-        // Deduct timer -10 seconds
-        // how to inform user they are wrong?
+        overallTimer -= 10;
     }
     showFeedback(feedback);
+    questionTracker++;
     // If not all questions are displayed, then continue. Else, display results
-    if (questionTracker < storedQuestions.length-1) {
-        questionTracker++;
+    if (questionTracker < storedQuestions.length) {
+       
         console.log(questionTracker);
         displayNextQuestion();
     } else {
@@ -110,7 +124,6 @@ function scoringQuiz (event) {
     }
 }
 
-// ****** Need to fix style for this feedback
 // Tells user when they choose the correct or wrong answer
 function showFeedback(feedback) {
     var timedFeedback = 1;
@@ -145,6 +158,8 @@ answerButton1.addEventListener("click", scoringQuiz);
 answerButton2.addEventListener("click", scoringQuiz);
 answerButton3.addEventListener("click", scoringQuiz);
 answerButton4.addEventListener("click", scoringQuiz);
+
+// fix timer when question runs out, just stop timer 
 
 // console.log(nextPage("start-page"));
 // console.log(nextPage("question-5"));

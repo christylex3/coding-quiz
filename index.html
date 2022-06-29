@@ -10,13 +10,13 @@
     <body>
         <header>
             <label id="view-highscore"><a href="./highscore.html">View Highscores</a></label>
-            <label id="timer">Time:</label>
+            <label id="timer">Time: 75</label>
         </header>
         <main>
             <section id="start-page">
                 <h1>Coding Quiz Challenge</h1>
                 <p>
-                    Do your best to answer the following code-related questions within the time limit (75 seconds). Answering incorrectly will deduct 10 seconds from the timer.
+                    Do your best to answer the following code-related questions within the time limit. Answering incorrectly will deduct 10 seconds from the timer.
                 </p>
                 <button id="start-quiz">Start Quiz</button>
             </section>
@@ -30,7 +30,7 @@
             </article>
             <article id="result-page" class="hidden">
                 <h2>All done!</h2>
-                <p>Your final score is</p>
+                <p id="final-score">Your final score is</p>
                 <label>Enter initials:</label>
                 <input id="user-initials" type="text"></input>
                 <button><a href="./highscore.html">Submit</a></button>
