@@ -25,6 +25,29 @@ var answerChoiceSlots = ["#first-answer", "#second-answer", "#third-answer", "#f
 // Variable that tracks question number
 var questionTracker = 0;
 
+
+var answerButton1 = document.querySelector(answerChoiceSlots[0]);
+var answerButton2 = document.querySelector(answerChoiceSlots[1]);
+var answerButton3 = document.querySelector(answerChoiceSlots[2]);
+var answerButton4 = document.querySelector(answerChoiceSlots[3]);
+
+if (answerButton1) {
+    answerButton1.addEventListener("click", scoringQuiz);
+}
+
+if (answerButton2) {
+    answerButton2.addEventListener("click", scoringQuiz);
+}
+
+if (answerButton3) {
+    answerButton3.addEventListener("click", scoringQuiz);
+}
+
+if (answerButton4) {
+    answerButton4.addEventListener("click", scoringQuiz);
+}
+
+
 // Displays the question on screen
 function displayQuestion () {
 
@@ -65,7 +88,9 @@ var questionPage = document.querySelector("#question-page");
 var resultPage = document.querySelector("#result-page");
 
 // Clicking on start quiz button will call the startQuiz function
-startQuizBtn.addEventListener("click", startQuiz);
+if (startQuizBtn) {
+    startQuizBtn.addEventListener("click", startQuiz);
+}
 
 // Hides the start-page and displays the first question
 function startQuiz () {
@@ -78,6 +103,7 @@ function startQuiz () {
 var overallTimer = 75;
 var timerInfo = document.querySelector("#timer");
 
+// The quiz'z timer is set to have 75 seconds and decrements
 function quizTimer() {
     var quizTimerInterval = setInterval(function() {
         overallTimer--;
@@ -94,7 +120,7 @@ function quizTimer() {
 var score = 0;
 var feedback = document.querySelector(".feedback");
 
-// ****** IN PROGRESS...
+// Grades the user when they take the quiz
 function scoringQuiz (event) {
 
     // User's selected answer choice 
@@ -140,27 +166,32 @@ function showFeedback(feedback) {
 }
 
 var finalScore = document.querySelector("#final-score");
-
+var highscore;
 // Displays the result page and shows total score
 function displayResult() {
     questionPage.classList.add("hidden");
     resultPage.classList.remove("hidden");
-    finalScore.textContent = "Your final score is " + (score + overallTimer);
+    highscore = score + overallTimer;
+    finalScore.textContent = "Your final score is " + highscore;
 }
 
-// MAY NEED TO CLEAN UP...
-var answerButton1 = document.querySelector(answerChoiceSlots[0]);
-var answerButton2 = document.querySelector(answerChoiceSlots[1]);
-var answerButton3 = document.querySelector(answerChoiceSlots[2]);
-var answerButton4 = document.querySelector(answerChoiceSlots[3]);
+var submitBtn = document.querySelector("#submit");
+var userInitials = document.getElementById("user-initials");
 
-// MAY NEED TO CLEAN UP...
-answerButton1.addEventListener("click", scoringQuiz);
-answerButton2.addEventListener("click", scoringQuiz);
-answerButton3.addEventListener("click", scoringQuiz);
-answerButton4.addEventListener("click", scoringQuiz);
+if (submitBtn) {
+    submitBtn.addEventListener("click", displayHighscores);
+}
 
-// fix timer when question runs out, just stop timer 
+var initialsList = [];
+var highscoreList = [];
+
+function displayHighscores() {
+    initialsList.push(userInitials.value);
+    highscoreList.push(highscore);
+}
+
+
+
 
 // console.log(nextPage("start-page"));
 // console.log(nextPage("question-5"));
