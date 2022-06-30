@@ -18,7 +18,7 @@ This coding quiz is a timed coding assessment with multiple-choice questions, an
 * __Figure 3__: This is an image of the result page where user receives their final score and can enter in their initials.
 ![Result Page](./assets/image/result-page.jpg)
 
-* __Figure 4__: This is an image of highscores page where user can view their 
+* __Figure 4__: This is an image of highscores page where user can view their highscores.
 ![Highscore Page](./assets/image/highscores-page.jpg)
 
 ## How to Run Project
