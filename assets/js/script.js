@@ -185,7 +185,7 @@ function displayResult() {
 
     // Calculates final score by correct answers plus remaining time
     overallScore = score + overallTimer;
-    finalScore.textContent = "Your final score is " + overallScore;
+    finalScore.textContent = "Your final score is " + overallScore + ".";
 }
 
 // Adds new player's initials and score to local storage
