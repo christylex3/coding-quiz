@@ -1,20 +1,3 @@
-var startQuizBtn = document.querySelector("#start-quiz");
-var startPage = document.querySelector("#start-page");
-var questionPage = document.querySelector("#question-page");
-var resultPage = document.querySelector("#result-page");
-var feedback = document.querySelector(".feedback");
-var timerInfo = document.querySelector("#timer");
-var answerButton1 = document.querySelector(answerChoiceSlots[0]);
-var answerButton2 = document.querySelector(answerChoiceSlots[1]);
-var answerButton3 = document.querySelector(answerChoiceSlots[2]);
-var answerButton4 = document.querySelector(answerChoiceSlots[3]);
-var finalScore = document.querySelector("#final-score");
-var userInitials = document.getElementById("user-initials");
-var submitBtn = document.querySelector("#submit");
-var score = 0;
-var overallTimer = 75;
-var overallScore;
-
 // Array that stores all questions
 var storedQuestions = [
     "Commonly used data types DO NOT include:",
@@ -41,6 +24,24 @@ var answerChoiceSlots = ["#first-answer", "#second-answer", "#third-answer", "#f
 
 // Variable that tracks the current question number
 var questionTracker = 0;
+
+var score = 0;
+var overallTimer = 75;
+var overallScore;
+
+var startQuizBtn = document.querySelector("#start-quiz");
+var startPage = document.querySelector("#start-page");
+var questionPage = document.querySelector("#question-page");
+var resultPage = document.querySelector("#result-page");
+var feedback = document.querySelector(".feedback");
+var timerInfo = document.querySelector("#timer");
+var answerButton1 = document.querySelector(answerChoiceSlots[0]);
+var answerButton2 = document.querySelector(answerChoiceSlots[1]);
+var answerButton3 = document.querySelector(answerChoiceSlots[2]);
+var answerButton4 = document.querySelector(answerChoiceSlots[3]);
+var finalScore = document.querySelector("#final-score");
+var userInitials = document.getElementById("user-initials");
+var submitBtn = document.querySelector("#submit");
 
 // Clicking on start quiz button will call the startQuiz function
 if (startQuizBtn) {
