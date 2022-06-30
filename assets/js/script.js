@@ -1,3 +1,20 @@
+var startQuizBtn = document.querySelector("#start-quiz");
+var startPage = document.querySelector("#start-page");
+var questionPage = document.querySelector("#question-page");
+var resultPage = document.querySelector("#result-page");
+var feedback = document.querySelector(".feedback");
+var timerInfo = document.querySelector("#timer");
+var answerButton1 = document.querySelector(answerChoiceSlots[0]);
+var answerButton2 = document.querySelector(answerChoiceSlots[1]);
+var answerButton3 = document.querySelector(answerChoiceSlots[2]);
+var answerButton4 = document.querySelector(answerChoiceSlots[3]);
+var finalScore = document.querySelector("#final-score");
+var userInitials = document.getElementById("user-initials");
+var submitBtn = document.querySelector("#submit");
+var score = 0;
+var overallTimer = 75;
+var overallScore;
+
 // Array that stores all questions
 var storedQuestions = [
     "Commonly used data types DO NOT include:",
@@ -22,13 +39,13 @@ var storedCorrectAns = [storedAnswers[2], storedAnswers[5], storedAnswers[11], s
 // Array that stores the specific slot of each answer choice
 var answerChoiceSlots = ["#first-answer", "#second-answer", "#third-answer", "#fourth-answer"];
 
-// Variable that tracks question number
+// Variable that tracks the current question number
 var questionTracker = 0;
 
-var answerButton1 = document.querySelector(answerChoiceSlots[0]);
-var answerButton2 = document.querySelector(answerChoiceSlots[1]);
-var answerButton3 = document.querySelector(answerChoiceSlots[2]);
-var answerButton4 = document.querySelector(answerChoiceSlots[3]);
+// Clicking on start quiz button will call the startQuiz function
+if (startQuizBtn) {
+    startQuizBtn.addEventListener("click", startQuiz);
+}
 
 if (answerButton1) {
     answerButton1.addEventListener("click", gradingQuiz);
@@ -46,6 +63,9 @@ if (answerButton4) {
     answerButton4.addEventListener("click", gradingQuiz);
 }
 
+if (submitBtn) {
+    submitBtn.addEventListener("click", savedPlayerInfo);
+}
 
 // Displays the question on screen
 function displayQuestion () {
@@ -53,26 +73,26 @@ function displayQuestion () {
     // Always set reset question when method is called
     var question = "";
 
-    // question will display as the h2 element under #question-page
+    // Question will display as the h2 element under #question-page
     question = document.querySelector("#question");
 
-    // question's text is grabbed from the array, 'storedQuestions'
+    // Question's text is grabbed from the array, 'storedQuestions'
     question.textContent = storedQuestions[questionTracker];
 }
 
-// Displays the corresponding answer choices with the question
+// Displays the corresponding answer choices for the current question
 function displayAnswerChoices() {
 
-    // Always set reset answer choices when next question is displayed
+    // Resets answer choices for the question
     var answerChoice = "";
     var answerTracker = questionTracker * 4;
-    var j = 0
+    var slotIndex = 0;
 
     // Assigns each answer choice a slot (based on button id) and a string from storedAnswers
     for (var i = answerTracker; i < answerTracker + 4; i++) {
-        answerChoice = document.querySelector(answerChoiceSlots[j]);
+        answerChoice = document.querySelector(answerChoiceSlots[slotIndex]);
         answerChoice.textContent = storedAnswers[i];
-        j++;
+        slotIndex++;
     }
 }
 
@@ -82,17 +102,7 @@ function displayNextQuestion () {
     displayAnswerChoices();
 }
 
-var startQuizBtn = document.querySelector("#start-quiz");
-var startPage = document.querySelector("#start-page");
-var questionPage = document.querySelector("#question-page");
-var resultPage = document.querySelector("#result-page");
-
-// Clicking on start quiz button will call the startQuiz function
-if (startQuizBtn) {
-    startQuizBtn.addEventListener("click", startQuiz);
-}
-
-// Hides the start-page and displays the first question
+// Hides the start-page, starts quiz's timer, and displays the first question 
 function startQuiz () {
     startPage.classList.add("hidden");
     questionPage.classList.remove("hidden");
@@ -100,25 +110,19 @@ function startQuiz () {
     displayNextQuestion();
 }
 
-var overallTimer = 75;
-var timerInfo = document.querySelector("#timer");
-
 // The quiz's timer is set to have 75 seconds and decrements
 function quizTimer() {
     var quizTimerInterval = setInterval(function() {
         overallTimer--;
         timerInfo.textContent = "Time: " + overallTimer;
 
-        // If timer runs out before user answers all question, take user to result-page
+        // Timer stops when user answers all question or when the timer runs out
         if (overallTimer === 0 || questionTracker > 4) {
             displayResult();
             clearInterval(quizTimerInterval);
         }
     }, 1000);
 }
-
-var score = 0;
-var feedback = document.querySelector(".feedback");
 
 // Grades the user when they take the quiz
 function gradingQuiz (event) {
@@ -135,14 +139,16 @@ function gradingQuiz (event) {
         score += 10;
     } else {
 
-        // Informs user they selected correct answer and penalizes user by deducting timer
+        // Informs user they selected the wrong answer and penalizes user by deducting timer
         feedback.textContent = "Wrong!"
         overallTimer -= 10;
     }
+
+    // Displays feedback and increments tracker for next question
     showFeedback(feedback);
     questionTracker++;
 
-    // If not all questions are displayed, then continue. Else, display results
+    // If not all questions are displayed, then continue to next question, or else, display results
     if (questionTracker < storedQuestions.length) {
         displayNextQuestion();
     } else {
@@ -155,7 +161,7 @@ function showFeedback(feedback) {
     var timedFeedback = 1;
     feedback.classList.remove("hidden");
 
-    // Feedback will show up for only one second and then disappear
+    // Feedback will show up for only one second and then hides
     var timerInterval = setInterval(function() {
         timedFeedback--;
         if (timedFeedback === 0) {
@@ -165,54 +171,41 @@ function showFeedback(feedback) {
     }, 1000);
 }
 
-var finalScore = document.querySelector("#final-score");
-var highscore;
 // Displays the result page and shows total score
 function displayResult() {
     questionPage.classList.add("hidden");
     resultPage.classList.remove("hidden");
-    highscore = score + overallTimer;
-    finalScore.textContent = "Your final score is " + highscore;
+
+    // Calculates final score by correct answers plus remaining time
+    overallScore = score + overallTimer;
+    finalScore.textContent = "Your final score is " + overallScore;
 }
 
-var submitBtn = document.querySelector("#submit");
-var userInitials = document.getElementById("user-initials");
-var highscoreList = document.querySelector("#highscore-list");
+// Adds new player's initials and score to local storage
+function savedPlayerInfo () {
 
-
-// function displayHighscores() {
-//     resultPage.classList.add("hidden");
-//     highscorePage.classList.remove("hidden");
-//     storedInitials.push(userInitials.value);
-//     storedHighscore.push(highscore);
-//     for (var i = 0; i < storedInitials.length; i++) {
-//         var li = document.createElement("li");
-//         li.textContent = storedInitials[i] + " - " + storedHighscore[i];
-//         var oldLi = li;
-//         highscoreList.appendChild(oldLi);
-//     }
-// }
-
-
-if (submitBtn) {
-    submitBtn.addEventListener("click", savedInfo);
-}
-
-function savedInfo () {
-    // localStorage.clear();
+    // Grabs existing players
     var playerTrack = JSON.parse(localStorage.getItem("players"));
 
+    // If there are no players before, make new array
     if (playerTrack === null) {
         playerTrack = [];
     }
 
+    // Grabs new player's info
     var player = {
         initials: userInitials.value.trim(),
-        score: highscore
+        score: overallScore
     };
 
+    // Adds new player's info to the localStorage
     playerTrack.push(player);
-    console.log(playerTrack);
     localStorage.setItem("players", JSON.stringify(playerTrack));
+
+    navigateToScorePage();
+}
+
+// Navigates to highscore page
+function navigateToScorePage() {
     window.location.href = "./highscore.html";
 }
