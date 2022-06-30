@@ -34,6 +34,7 @@ var overallTimer = 75;
 // Variable that is used to calculate final score (remaining time plus number of correct answers)
 var overallScore;
 
+// Variables that hold the specified first element of the class or ID
 var startQuizBtn = document.querySelector("#start-quiz");
 var startPage = document.querySelector("#start-page");
 var questionPage = document.querySelector("#question-page");
@@ -45,7 +46,7 @@ var answerButton2 = document.querySelector(answerChoiceSlots[1]);
 var answerButton3 = document.querySelector(answerChoiceSlots[2]);
 var answerButton4 = document.querySelector(answerChoiceSlots[3]);
 var finalScore = document.querySelector("#final-score");
-var userInitials = document.getElementById("user-initials");
+var userInitials = document.querySelector("#user-initials");
 var submitBtn = document.querySelector("#submit");
 
 // Adding click event listener to each button
