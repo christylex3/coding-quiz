@@ -28,7 +28,7 @@ li {
     background-color: rgb(239, 222, 252);
 }
 
-li:nth-child(odd) {
+li:nth-child(odd), ::marker {
     background-color: rgb(223, 181, 252);
 }
 
