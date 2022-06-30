@@ -24,8 +24,14 @@ article {
     text-align: left;
 }
 
+ol {
+    background-color: rgb(223, 181, 252);
+    padding-left: 1.5rem;
+}
+
 li {
     background-color: rgb(239, 222, 252);
+    padding-left: 0.5rem;
 }
 
 li:nth-child(odd) {
@@ -51,7 +57,7 @@ p, label, input {
 /* Link buttons are adjusted to look like other buttons */
 button, button a {
     color: white;
-    background-color: purple;
+    background-color: rgb(97, 3, 151);
     font-size: 1.5rem;
     border-radius: 4px;
 }
@@ -82,4 +88,10 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+@media screen and (max-width: 1100px) {
+    main {
+        width: 60%;
+    }
 }
