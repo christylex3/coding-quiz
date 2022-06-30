@@ -177,26 +177,42 @@ function displayResult() {
 
 var submitBtn = document.querySelector("#submit");
 var userInitials = document.getElementById("user-initials");
+var highscoreList = document.querySelector("#highscore-list");
+
+
+// function displayHighscores() {
+//     resultPage.classList.add("hidden");
+//     highscorePage.classList.remove("hidden");
+//     storedInitials.push(userInitials.value);
+//     storedHighscore.push(highscore);
+//     for (var i = 0; i < storedInitials.length; i++) {
+//         var li = document.createElement("li");
+//         li.textContent = storedInitials[i] + " - " + storedHighscore[i];
+//         var oldLi = li;
+//         highscoreList.appendChild(oldLi);
+//     }
+// }
+
 
 if (submitBtn) {
-    submitBtn.addEventListener("click", displayHighscores);
+    submitBtn.addEventListener("click", savedInfo);
 }
 
-var initialsList = [];
-var highscoreList = [];
-var list = docment.querySelector("#highscore-list");
-console.log(list);
-// var list = document.createElement("ol");
+function savedInfo () {
+    // localStorage.clear();
+    var playerTrack = JSON.parse(localStorage.getItem("players"));
 
-function displayHighscores() {
-    initialsList.push(userInitials.value);
-    highscoreList.push(highscore);
-    for (var i = 0; i < initialsList.length; i++) {
-        var li = document.createElement("li");
-        li.textContent(initialsList[i] + " - " + highscoreList[i]);
-        list.appendChild(li);
+    if (playerTrack === null) {
+        playerTrack = [];
     }
-    // Create ordered list element
-    // Create ordered list items
-    // Add text for list items / loop through array to 
+
+    var player = {
+        initials: userInitials.value.trim(),
+        score: highscore
+    };
+
+    playerTrack.push(player);
+    console.log(playerTrack);
+    localStorage.setItem("players", JSON.stringify(playerTrack));
+    window.location.href = "./highscore.html";
 }
