@@ -25,8 +25,13 @@ var answerChoiceSlots = ["#first-answer", "#second-answer", "#third-answer", "#f
 // Variable that tracks the current question number
 var questionTracker = 0;
 
+// Variable that tracks the number of correct answers to question
 var score = 0;
+
+// Variable that tracks overall timer for quiz
 var overallTimer = 75;
+
+// Variable that is used to calculate final score (remaining time plus number of correct answers)
 var overallScore;
 
 var startQuizBtn = document.querySelector("#start-quiz");
@@ -43,7 +48,7 @@ var finalScore = document.querySelector("#final-score");
 var userInitials = document.getElementById("user-initials");
 var submitBtn = document.querySelector("#submit");
 
-// Clicking on start quiz button will call the startQuiz function
+// Adding click event listener to each button
 if (startQuizBtn) {
     startQuizBtn.addEventListener("click", startQuiz);
 }
