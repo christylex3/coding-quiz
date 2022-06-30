@@ -10,7 +10,7 @@ header {
     justify-content: space-between;
 }
 
-/* Centers content and limits the width to 70% */
+/* Centers content and limits the width to 50% */
 main {
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@ main {
     margin: 2rem auto;
 }
 
-/* Question-page and result-page are left-aligned */
+/* Question-page, result-page, and highscore-page are left-aligned */
 article {
     text-align: left;
 }
